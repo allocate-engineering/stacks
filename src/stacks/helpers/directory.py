@@ -3,7 +3,7 @@ import shutil
 
 
 def copy_files(src, dst, include=None, prefix=""):
-    assert src.is_dir()
+    assert src.is_dir(), "'" + str(src) + "' directory does not exist"
 
     for item in src.iterdir():
         if item.is_file() and any(fnmatch.fnmatch(item.name, pattern) for pattern in include):

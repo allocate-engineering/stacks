@@ -65,7 +65,7 @@ def get_stack_data(key, ctx, argv, *args, **kwargs):
     remote_ctx = remote_context(ctx=ctx, *args, **kwargs)
     cur_hashdir_val = hashdir(remote_ctx.stack_dir)
     old_hashdir_val = db.get(str(remote_ctx.stack_dir))
-    cache_key = cur_hashdir_val + ":" + key
+    cache_key = cur_hashdir_val + ":" + ctx.env + ":" + key
     if cur_hashdir_val == old_hashdir_val and db.has_key(cache_key):
         return db.get(cache_key)
     else:
